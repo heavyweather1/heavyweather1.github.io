@@ -76,7 +76,7 @@ the data from the weather API*/
 function fetchWeatherData() {
 /*Fetch the data and dynamicaly add 
 the city name with template literals*/
-fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd0211848210510&q=${cityInput}`)
+fetch(`http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={db43bd5fb99e62bf02974f4053b015ad}=${cityInput}`)
   /*Take the data (Which is in JSON format) 
   and convert it to a regular JS object*/
   .then(response => response.json())
