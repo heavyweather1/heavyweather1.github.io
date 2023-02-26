@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Spline+Sans+Mono:wght@300&family=VT323&display=swap');
+
+
 body {
   margin: 0;
-  font-family: 'Rubik', sans-serif;
-  background: #111;
+  font-family: 'Amatic SC', cursive;
+  font-family: 'Spline Sans Mono', monospace;
+  font-family: 'VT323', monospace;
 }
 
 * {
@@ -10,6 +14,10 @@ body {
 
 h1, h3 {
   font-weight: 400;
+  font-family: 'Amatic SC', cursive;
+  font-family: 'Spline Sans Mono', monospace;
+  font-family: 'VT323', monospace;
+
 }
 
 .weather-app {
@@ -18,7 +26,7 @@ h1, h3 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #fff;
+  color: white;
   position: relative;
   transition: 500ms;
   opacity: 0; /* change to '0' 
@@ -59,17 +67,18 @@ h1, h3 {
 .city-time,
 .temp,
 .weather {
-  margin: 0 1em;
+  margin: 0 2em;
 }
 
 .city-time h1 {
   margin: 0;
   margin-bottom: 0.2em;
-  font-size: 3em;
+  font-size: 5em;
+  
 }
 
 .temp {
-  font-size: 7em;
+  font-size: 10em;
   margin: 0;
 }
 
@@ -84,18 +93,14 @@ h1, h3 {
   height: 100%;
   top: 0;
   right: 0;
-  background: rgba(110, 110, 110, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: 1;
   padding: 3em 2em;
-  overflow-Y: scroll;
+  color: white;
 }
 
 .panel form {
-  margin-bottom: 3em;
+  margin-bottom: 28em;
+  color: white;
 }
 
 .submit {
@@ -106,11 +111,10 @@ h1, h3 {
   margin: 0;
   border: none;
   outline: none;
-  background: #fa6d1b;
-  color: #fff;
+  color: white;
   cursor: pointer;
-  font-size: 1.2em;
-  transition: 0.4s;
+  font-size: 0em;
+  transition: 0s;
 }
 
 .submit:hover {
@@ -119,13 +123,24 @@ h1, h3 {
 }
 
 .search {
+  position: relative;
+  right: 60%;
+  top: 0%;
   background: none;
   border: none;
-  border-bottom: 1px #ccc solid;
   padding: 0 1em 0.5em 0;
   width: 80%;
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1.5em;
+  font-family: 'Amatic SC', cursive;
+  font-family: 'Spline Sans Mono', monospace;
+  font-family: 'VT323', monospace;
+
+}
+
+.dName{
+  position: relative;
+  left: 37%;
 }
 
 .search:focus {
@@ -133,17 +148,17 @@ h1, h3 {
 }
 
 .search::placeholder {
-  color: #ccc;
+  color: white;
 }
 
 .panel ul {
   padding: 0 0 1em 0;
   margin: 2em 0;
-  border-bottom: 1px #ccc solid;
+  font-size: 20px;
 }
 
 .panel ul li {
-  color: #ccc;
+  color: white;
   margin: 2.5em 0;
 }
 
@@ -157,42 +172,13 @@ h1, h3 {
 }
 
 .city:hover {
-  color: #fff;
+  color: white;
 }
 
 .details li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-@media screen and (max-width: 1000px) {
-  html {
-   font-size: 14px;
-  }
-  .temp {
-   font-size: 4em;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .panel, .container {
-    position: relative;
-    width: 100%;
-    top: initial;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  html {
-   font-size: 12px;
-  }
-}
-
-@media screen and (max-height: 300px) {
-  .weather-app {
-    min-height: 40em; 
-  }
 }
 
 

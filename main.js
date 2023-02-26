@@ -14,8 +14,8 @@ const search = document.querySelector('.search');
 const btn = document.querySelector('.submit');
 const cities = document.querySelectorAll('.city');
 
-//Default city when the page loads
-let cityInput = "London";
+// Staden som kommer att laddas in först på sidan
+let cityInput = "Gothenburg";
 
 //Add click event to each city in the panel
 cities.forEach((city) => {
@@ -197,7 +197,7 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
   /*If the user types a city that doesn't exist, 
   throw an alert*/
   .catch(() => {
-    alert('City not found, please try again');
+    alert('Weather Report was not found.');
     app.style.opacity = "1";
   });
 }
