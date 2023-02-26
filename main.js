@@ -1,6 +1,6 @@
 //Get all necessary elements from the DOM
 const app = document.querySelector('.weather-app');
-const temperature = document.querySelector('.temperature');
+const temp = document.querySelector('.temp');
 const dateOutput = document.querySelector('.date');
 const timeOutput = document.querySelector('.time');
 const conditionOutput = document.querySelector('.condition');
@@ -15,7 +15,7 @@ const btn = document.querySelector('.submit');
 const cities = document.querySelectorAll('.city');
 
 //Default city when the page loads
-let cityInput = "Gothenburg";
+let cityInput = "London";
 
 //Add click event to each city in the panel
 cities.forEach((city) => {
@@ -208,7 +208,6 @@ fetchWeatherData();
 //Fade in the page
 app.style.opacity = "1";
   
-
 
 
 
