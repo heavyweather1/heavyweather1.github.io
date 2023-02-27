@@ -1,4 +1,3 @@
-//Get all necessary elements from the DOM
 const cloudOutput = document.querySelector('.cloud');
 const temp = document.querySelector('.temp');
 const conditionOutput = document.querySelector('.condition');
@@ -14,7 +13,6 @@ const btn = document.querySelector('.submit');
 const app = document.querySelector('.weather-app');
 const cities = document.querySelectorAll('.city');
 
-// Staden som kommer att laddas in först på sidan
 let cityInput = "Gothenburg";
 
 cities.forEach((city) => {
@@ -25,7 +23,6 @@ cities.forEach((city) => {
   });
 })
 
-//Add submit event to the form
 form.addEventListener('submit', (e) => {
   if(search.value.trim() === '') {
     alert('Please type in a city name');
@@ -39,10 +36,6 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
 });
 
-
-/*Function that returns a day of the week 
-(Monday, Tuesday, Friday...) from a date (12 03 2021)
-We will use this function later*/
 function dayOfTheWeek(day, month, year) {
   const weekday = [
     "Sunday", 
@@ -68,24 +61,18 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
     conditionOutput.innerHTML = data.current.condition.text;
     
 
-    /* Get the date and time from the city and extract 
-    the day, month, year and time into individual variables*/
+
     const date = data.location.localtime;
     const y = parseInt(date.substr(0, 4));
     const d = parseInt(date.substr(5, 2));
     const m = parseInt(date.substr(8, 2));
     const time = date.substr(11); 
     
-    /*Reformat the date into somehing more 
-    appealing and add it to the page*/
-    /*Original format: 2021-10-09 17:53*/
-    /*New Format: 17:53 - Friday 9, 10 2021*/
+
     dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d}, ${m} ${y}`;
     timeOutput.innerHTML = time;
-    /*Add the name of the city into the page*/
     nameOutput.innerHTML = data.location.name;
-    /*Get the corresponding icon url for 
-    the weather and extract a part of it*/
+
     const iconId = data.current.condition.icon.substr("//cdn.weatherapi.com/weather/64x64/".length);
     
 
@@ -149,22 +136,19 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
       app.style.backgroundImage = `url(./images/${timeOfDay}/snowy.jpg)`;
       btn.style.background = timeOfDay === "night" ? "#1b1b1b" : "#4d72aa";
     }
-    //Fade in the page once all is done
+
     app.style.opacity = "1";
   })
 
-  /*If the user types a city that doesn't exist, 
-  throw an alert*/
+
   .catch(() => {
     alert('Weather Report was not found.');
     app.style.opacity = "1";
   });
 }
 
-//Call the function on page load
 fetchWeatherData();
 
-//Fade in the page
 app.style.opacity = "1";
   
 
