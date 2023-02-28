@@ -1,25 +1,24 @@
-const cloudOutput = document.querySelector('.cloud');
-const temp = document.querySelector('.temp');
-const conditionOutput = document.querySelector('.condition');
-const dateOutput = document.querySelector('.date');
-const timeOutput = document.querySelector('.time');
-const icon = document.querySelector('.icon');
-const humidityOutput = document.querySelector('.humidity');
-const windOutput = document.querySelector('.wind');
-const form = document.querySelector('#locationInput');
-const nameOutput = document.querySelector('.name');
+const JoJo = document.querySelectorAll('.city');
+const conditionReport = document.querySelector('.condition');
+const nameReport = document.querySelector('.name');
 const search = document.querySelector('.search');
-const btn = document.querySelector('.submit');
-const app = document.querySelector('.weather-app');
-const cities = document.querySelectorAll('.city');
+const dateReport = document.querySelector('.date');
+const timeReport = document.querySelector('.time');
+const humidityReport = document.querySelector('.humidity');
+const windReport = document.querySelector('.wind');
+const form = document.querySelector('#locationInput');
+const weatherButton = document.querySelector('.submit');
+const report = document.querySelector('.weather-report');
+const molnReport = document.querySelector('.cloud');
+const weatherTemp = document.querySelector('.temperature');
 
 let cityInput = "Gothenburg";
 
-cities.forEach((city) => {
+JoJo.forEach((city) => {
   city.addEventListener('click', (e) => {
     cityInput = e.target.innerHTML;
     fetchWeatherData();
-    app.style.opacity = "0";
+    JoJo.style.opacity = "0";
   });
 })
 
@@ -30,7 +29,7 @@ form.addEventListener('submit', (e) => {
     cityInput = search.value.trim();
     fetchWeatherData();
     search.value = '';
-    app.style.opacity = '0';
+    report.style.opacity = '0';
   }
   
   e.preventDefault();
@@ -57,8 +56,8 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
   .then(data => {
     console.log(data);
     
-    temp.innerHTML = data.current.temp_c + "&#176;";
-    conditionOutput.innerHTML = data.current.condition.text;
+    weatherTemp.innerHTML = data.current.temp_c + "&#176;";
+    conditionReport.innerHTML = data.current.condition.text;
     
 
 
@@ -69,21 +68,18 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
     const time = date.substr(11); 
     
 
-    dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d}, ${m} ${y}`;
-    timeOutput.innerHTML = time;
-    nameOutput.innerHTML = data.location.name;
+    dateReport.innerHTML = `${dayOfTheWeek(d, m, y)} ${d}, ${m} ${y}`;
+    timeReport.innerHTML = time;
+    nameReport.innerHTML = data.location.name;    
 
-    const iconId = data.current.condition.icon.substr("//cdn.weatherapi.com/weather/64x64/".length);
-    
-
-    dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)}, ${m} ${y}`;
-    timeOutput.innerHTML = time;
-    nameOutput.innerHTML = data.location.name;
+    dateReport.innerHTML = `${dayOfTheWeek(d, m, y)}, ${m} ${y}`;
+    timeReport.innerHTML = time;
+    nameReport.innerHTML = data.location.name;
 
     
-    cloudOutput.innerHTML = data.current.cloud + "%";
-    humidityOutput.innerHTML = data.current.humidity + "%";
-    windOutput.innerHTML = data.current.wind_kph + "km/h";
+    molnReport.innerHTML = data.current.cloud + "%";
+    humidityReport.innerHTML = data.current.humidity + "%";
+    windReport.innerHTML = data.current.wind_kph + "km/h";
     
     let timeOfDay = "day";
     const code = data.current.condition.code; 
@@ -93,8 +89,8 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
     } 
     
     if (code === 1000) {
-      app.style.backgroundImage = `url(./images/${timeOfDay}/clear.jpg)`;
-      btn.style.background = timeOfDay === "night" ? "#181e27" : "#e5ba92";
+      report.style.backgroundImage = `url(./images/${timeOfDay}/clear.jpg)`;
+      weatherButton.style.background = timeOfDay === "night" ? "#181e27" : "#e5ba92";
     } else if (
       code === 1003 ||
       code === 1006 ||
@@ -108,8 +104,8 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
       code === 1279 ||
       code === 1282
     ) {
-      app.style.backgroundImage = `url(./images/${timeOfDay}/cloudy.jpg)`;
-      btn.style.background = timeOfDay === "night" ? "#181e27" : "#fa6d1b";
+      report.style.backgroundImage = `url(./images/${timeOfDay}/cloudy.jpg)`;
+      weatherButton.style.background = timeOfDay === "night" ? "#181e27" : "#fa6d1b";
     } else if (
       code === 1063 ||
       code === 1069 ||
@@ -130,27 +126,23 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
       code === 1249 ||
       code === 1252 
     ) {
-      app.style.backgroundImage = `url(./images/${timeOfDay}/rainy.jpg)`;
-      btn.style.background = timeOfDay === "night" ? "#325c80" : "#647d75";
+      report.style.backgroundImage = `url(./images/${timeOfDay}/rainy.jpg)`;
+      weatherButton.style.background = timeOfDay === "night" ? "#325c80" : "#647d75";
     } else {
-      app.style.backgroundImage = `url(./images/${timeOfDay}/snowy.jpg)`;
-      btn.style.background = timeOfDay === "night" ? "#1b1b1b" : "#4d72aa";
+      report.style.backgroundImage = `url(./images/${timeOfDay}/snowy.jpg)`;
+      weatherButton.style.background = timeOfDay === "night" ? "#1b1b1b" : "#4d72aa";
     }
 
-    app.style.opacity = "1";
+    report.style.opacity = "1";
   })
 
 
   .catch(() => {
     alert('Weather Report was not found.');
-    app.style.opacity = "1";
+    report.style.opacity = "1";
   });
 }
 
 fetchWeatherData();
 
-app.style.opacity = "1";
-  
-
-
-
+report.style.opacity = "1";

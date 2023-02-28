@@ -20,7 +20,7 @@ h1, h3 {
 
 }
 
-.weather-app {
+.weather-report {
   min-height: 100vh;
   background-image: url(./images/day/cloudy.jpg);
   background-position: center;
@@ -33,7 +33,7 @@ h1, h3 {
 }
 
 /*Add background overlay*/
-.weather-app::before {
+.weather-report::before {
   content: "";
   position: absolute;
   top: 0;
@@ -64,7 +64,7 @@ h1, h3 {
 }
 
 .city-time,
-.temp,
+.temperature,
 .weather {
   margin: 0 2em;
 }
@@ -72,11 +72,11 @@ h1, h3 {
 .city-time h1 {
   margin: 0;
   margin-bottom: 0.2em;
-  font-size: 5em;
+  font-size: 3em;
   
 }
 
-.temp {
+.temperature {
   font-size: 10em;
   margin: 0;
 }
@@ -179,22 +179,3 @@ h1, h3 {
   justify-content: space-between;
   align-items: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
