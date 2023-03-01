@@ -71,11 +71,6 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=e0c1a083d9094ababd02118482
     dateReport.innerHTML = `${dayOfTheWeek(d, m, y)} ${d}, ${m} ${y}`;
     timeReport.innerHTML = time;
     nameReport.innerHTML = data.location.name;    
-
-    dateReport.innerHTML = `${dayOfTheWeek(d, m, y)}, ${m} ${y}`;
-    timeReport.innerHTML = time;
-    nameReport.innerHTML = data.location.name;
-
     
     molnReport.innerHTML = data.current.cloud + "%";
     humidityReport.innerHTML = data.current.humidity + "%";
